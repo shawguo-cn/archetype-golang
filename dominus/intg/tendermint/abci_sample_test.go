@@ -13,7 +13,7 @@ import (
 
 
 //EE: data is hex encoded in abci_query result.
-func TestDummy(t *testing.T) {
+func ITestDummy(t *testing.T) {
 
 	resp, _ := http.Get(config.Tendermint_RPC_URL + "/broadcast_tx_sync?tx=\"abc123=shawguo3\"");
 	body, _ := ioutil.ReadAll(resp.Body)

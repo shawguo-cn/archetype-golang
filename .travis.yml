@@ -6,6 +6,7 @@ go:
 install:
  - go get golang.org/x/tools/cmd/cover
  - go get github.com/ethereum/go-ethereum
+ - go get github.com/ethereum/go-ethereum/accounts
  - go get github.com/stretchr/testify/assert
  - go get github.com/bitly/go-simplejson
 script:
