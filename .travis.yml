@@ -1,9 +1,8 @@
 language: go
-go_import_path: github.com/shawguo-cn/archetype-golang
 go:
  - 1.7.x
 
-install:
+before_install:
  - go get golang.org/x/tools/cmd/cover
  - go get github.com/ethereum/go-ethereum
  - go get github.com/ethereum/go-ethereum/accounts
