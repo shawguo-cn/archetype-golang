@@ -7,18 +7,7 @@ import (
 	"github.com/ethereum/go-ethereum/accounts"
 	"github.com/stretchr/testify/assert"
 	"fmt"
-	"os"
 )
-
-const (
-	KEYSTORE_DIR = "/tmp/keystore"
-)
-
-func TestMain(m *testing.M) {
-	fmt.Println("TestMain Setup")
-	os.RemoveAll(KEYSTORE_DIR)
-	os.Exit(m.Run())
-}
 
 //EE:key or account management
 func TestCreateAccount(t *testing.T) {
@@ -37,7 +26,7 @@ func TestCreateAccount(t *testing.T) {
 
 //EE: Fully client side account management without any backing Ethereum node
 func TestGethAccuntManager(t *testing.T) {
-	am := accounts.NewManager(KEYSTORE_DIR, accounts.StandardScryptN, accounts.StandardScryptP)
+	am := accounts.NewManager(TEMP_KEYSTORE_DIR, accounts.StandardScryptN, accounts.StandardScryptP)
 	passphrase := "welcome1"
 	newPassphrase := "welcome2"
 

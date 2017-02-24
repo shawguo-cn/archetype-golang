@@ -11,14 +11,6 @@ import (
 	"fmt"
 )
 
-const (
-	//public
-	levelDb = "/home/deploy/.ethereum/geth/chaindata"
-	stateRootHash = "0x2096f2080d0a504b5ba739867b6000068474831d5d12f81360eb45d36f125676"
-	lookupAccount = "0xa299a0e687e5b750eddd8c108d04e2753ae3c145"
-
-	//testnet
-)
 
 // Used for testing
 func newTrie(root common.Hash) *trie.Trie {
@@ -32,7 +24,7 @@ func newTrie(root common.Hash) *trie.Trie {
 
 //EE: Ethereum account state
 func TestStateRootIterator(t *testing.T) {
-	trie := newTrie(common.HexToHash(stateRootHash))
+	trie := newTrie(common.HexToHash(StateRootHash))
 	i := 0;
 	for it := trie.Iterator(); it.Next(); {
 		i = i + 1;
@@ -49,7 +41,7 @@ func TestStateRootIterator(t *testing.T) {
 
 func TestStateLookup(t *testing.T) {
 	trie := newTrie(common.HexToHash("0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421"))
-	address := common.HexToAddress(lookupAccount)
+	address := common.HexToAddress(LookupAccount)
 	val := trie.Get(address[:])
 	if len(val) == 0 {
 		//TODO nil?
