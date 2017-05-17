@@ -11,11 +11,11 @@ import (
 )
 
 
-
 //EE: data is hex encoded in abci_query result.
-func ITestDummy(t *testing.T) {
+//./tendermint node --proxy_app=dummy
+func TestDummy(t *testing.T) {
 
-	resp, _ := http.Get(config.Tendermint_RPC_URL + "/broadcast_tx_sync?tx=\"abc123=shawguo3\"");
+	resp, _ := http.Get(config.Tendermint_RPC_URL + "/broadcast_tx_sync?tx=\"abc123=shawguo\"");
 	body, _ := ioutil.ReadAll(resp.Body)
 
 	fmt.Println(string(body))
