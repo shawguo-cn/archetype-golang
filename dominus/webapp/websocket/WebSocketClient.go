@@ -70,23 +70,16 @@ func main() {
 		}
 	}()
 
-	//read from producer errors channel in case of deadlock.
-	go func() {
-		for {
-			select {
-			case errors := <-producer.Errors():
-			//MUST read from this channel or the Producer will deadlock when the channel is full
-			//panic: kafka: Failed to deliver 1 messages.
-				println(errors)
-			}
-		}
-	}()
-
 	ticker := time.NewTicker(time.Minute)
 	defer ticker.Stop()
 
 	for {
 		select {
+		//read from producer errors channel in case of deadlock.
+		case errors := <-producer.Errors():
+		//MUST read from this channel or the Producer will deadlock when the channel is full
+		//panic: kafka: Failed to deliver 1 messages.
+			println(errors)
 		case t := <-ticker.C:
 			err := c.WriteMessage(websocket.TextMessage, []byte(t.String()))
 			if err != nil {
