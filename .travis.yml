@@ -6,7 +6,7 @@ go:
 install:
  - mkdir $GOPATH/bin
  - curl https://glide.sh/get | sh
- - glide update --strip-vendor --all-dependencies --skip-test
+ - glide update --all-dependencies --strip-vendor --skip-test
  - glide install
 script:
  - go test -v ./...
