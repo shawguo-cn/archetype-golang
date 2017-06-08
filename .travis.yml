@@ -5,6 +5,7 @@ go:
 
 install:
  - mkdir $GOPATH/bin
+ - mkdir -p /home/travis/.glide/cache/src/https-github.com-ethereum-go-ethereum/ethutil
  - curl https://glide.sh/get | sh
  - glide install
 script:
