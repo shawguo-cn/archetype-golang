@@ -51,8 +51,19 @@ func main() {
 		for {
 			_, message, err := c.ReadMessage()
 			if err != nil {
-				log.Println("read:", err)
-				return
+				//read: connection reset by peer
+				//The remote server has sent you a RST packet
+				//"Connection reset by peer" is the TCP/IP equivalent of slamming the phone back on the hook.
+				log.Println("read error:", err)
+				c.Close()
+
+				//try to re-dial and continue
+				c, _, err = websocket.DefaultDialer.Dial(u.String(), nil)
+				if err != nil {
+					log.Fatal("re-dial error:", err)
+					return
+				}
+				continue
 			}
 			if len(message) == 0 {
 				continue
