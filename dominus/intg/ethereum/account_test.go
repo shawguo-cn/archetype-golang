@@ -1,12 +1,12 @@
 package ethereum
 
 import (
-	"testing"
-	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/accounts"
-	"github.com/stretchr/testify/assert"
 	"fmt"
+	"github.com/ethereum/go-ethereum/accounts"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/crypto"
+	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 //EE:key or account management
@@ -36,10 +36,10 @@ func TestGethAccuntManager(t *testing.T) {
 	assert.Equal(t, 1, len(am.Accounts()))
 
 	//exports account as a JSON key, encrypted with newPassphrase.
-	jsonAcc, err := am.Export(newAcc, "password", newPassphrase);
+	jsonAcc, err := am.Export(newAcc, "password", newPassphrase)
 	assert.NotNil(t, err)
 	println(err.Error())
-	jsonAcc, err = am.Export(newAcc, passphrase, newPassphrase);
+	jsonAcc, err = am.Export(newAcc, passphrase, newPassphrase)
 	fmt.Println("Export decrypted keyJSON:", string(jsonAcc))
 
 	//deletes the key matched by account if the passphrase is correct.

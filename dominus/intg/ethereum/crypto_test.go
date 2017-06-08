@@ -1,10 +1,10 @@
 package ethereum
 
 import (
-	"encoding/hex"
-	"testing"
 	"bytes"
+	"encoding/hex"
 	"github.com/ethereum/go-ethereum/crypto/sha3"
+	"testing"
 )
 
 var testAddrHex = "970e8128ab834e8eac17ab8e3812f010678cf791"

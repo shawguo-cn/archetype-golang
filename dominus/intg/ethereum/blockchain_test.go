@@ -1,14 +1,14 @@
 package ethereum
 
 import (
+	"fmt"
 	"github.com/ethereum/ethash"
+	"github.com/ethereum/go-ethereum/core"
 	"github.com/ethereum/go-ethereum/ethdb"
 	"github.com/ethereum/go-ethereum/event"
-	"github.com/ethereum/go-ethereum/core"
-	"testing"
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/ethereum/go-ethereum/pow"
-	"fmt"
+	"testing"
 )
 
 func thePow() pow.PoW {
@@ -33,13 +33,13 @@ func TestPrintBlock(t *testing.T) {
 	bchain := theTestnetChain(TheEthdb(TestnetDBPath, t), t)
 
 	block := bchain.GetBlockByNumber(blockNum)
-	fmt.Printf("%+v\n", block.Transactions())  //TODO PANIC=runtime error: invalid memory address or nil pointer dereference
+	fmt.Printf("%+v\n", block.Transactions()) //TODO PANIC=runtime error: invalid memory address or nil pointer dereference
 
 	for _, element := range block.Transactions() {
 		fmt.Printf("transaction hash=%v, to=%v\n", element.Hash().Hex(), element.To().Hex()) //TODO
 	}
 
-	genesis:=bchain.Genesis()
+	genesis := bchain.Genesis()
 	fmt.Printf("%+v", genesis)
 }
 

@@ -1,21 +1,21 @@
 package ethereum
 
 import (
-	"testing"
-	"github.com/ethereum/go-ethereum/common"
-	"github.com/ethereum/go-ethereum/ethdb"
-	"github.com/ethereum/go-ethereum/trie"
-	"github.com/ethereum/go-ethereum/rlp"
-	"github.com/ethereum/go-ethereum/core/state"
-	"os"
 	"fmt"
+	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/state"
+	"github.com/ethereum/go-ethereum/ethdb"
+	"github.com/ethereum/go-ethereum/rlp"
+	"github.com/ethereum/go-ethereum/trie"
+	"os"
+	"testing"
 )
-
 
 // Used for testing
 func newTrie(root common.Hash) *trie.Trie {
 	db, _ := ethdb.NewLDBDatabase("/home/deploy/.ethereum/geth/chaindata", 0, 0)
-	trie, err := trie.New(root, db); if err != nil {
+	trie, err := trie.New(root, db)
+	if err != nil {
 		println(err.Error())
 		os.Exit(10)
 	}
@@ -25,9 +25,9 @@ func newTrie(root common.Hash) *trie.Trie {
 //EE: Ethereum account state
 func TestStateRootIterator(t *testing.T) {
 	trie := newTrie(common.HexToHash(StateRootHash))
-	i := 0;
+	i := 0
 	for it := trie.Iterator(); it.Next(); {
-		i = i + 1;
+		i = i + 1
 		fmt.Printf("Adress:%v, %vth\n", common.BytesToAddress(it.Key).Hex(), i)
 		//decode account
 		var value = new(state.Account)
