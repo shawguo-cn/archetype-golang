@@ -4,7 +4,7 @@ import:
   version: ~1.12.0
 - package: github.com/ethereum/ethash
 - package: github.com/ethereum/go-ethereum
-  version: =1.5.9
+  version: 1.5.9
   subpackages:
   - ethdb
 - package: github.com/gorilla/websocket
