@@ -2,11 +2,11 @@ package: github.com/shawguo-cn/archetype-golang
 import:
 - package: github.com/Shopify/sarama
   version: ~1.12.0
-- package: github.com/ethereum/ethash
 - package: github.com/ethereum/go-ethereum
   version: 1.5.9
   subpackages:
   - ethdb
+  - vendor/github.com/ethereum/ethash
 - package: github.com/gorilla/websocket
   version: ~1.1.0
 - package: github.com/shiyanhui/dht
